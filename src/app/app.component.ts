@@ -14,7 +14,7 @@ import {Panels} from "../pages/panel/panel";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = Panels;
 
   pages: Array<{title: string, component: any}>;
 

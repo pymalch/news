@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Slides, Card } from 'ionic-angular';
+
 
 @Component({
   selector: 'panel',
   templateUrl: 'panel.html'
 })
 export class Panels {
+  @ViewChild(Slides) slides: Slides;
 
+  item: any;
   panels: Array<{title: string}>;
-
-
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
     this.panels = [];
    for (let i=0; i<5; i++){
      this.panels.push({
-       title : 'oj'
+       title : 'title '+i
      })
    }
   }
