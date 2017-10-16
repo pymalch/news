@@ -1,23 +1,23 @@
-import { Panel } from './panel';
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
-
+import { Panel } from './panel';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class PanelService {
 
-    private headers = new Headers({'Content-Type': 'application/json'});
+    //private headers = new Headers({'Content-Type': 'application/json'});
     private heroesUrl = 'api/panels';  // URL to web api
 
     constructor(private http: Http) { }
 
     getPanels(): Promise<Panel[]> {
+
         let result: any = this.http.get(this.heroesUrl)
             .toPromise()
-            .then(response => response.json().data as Panel[])
+            .then(response => response.json() as Panel[])
             .catch(this.handleError);
-        console.log(result);
+
         return result;
 
     }
