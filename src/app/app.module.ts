@@ -4,38 +4,38 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule }    from '@angular/http';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {DetailPage} from "../pages/detail/detail";
-import {PanelComponent} from "../pages/panel/panel.component";
+import {PanelPage} from "../pages/panel/panel";
+
 import {PanelService} from "../pages/panel/panel.service";
+import {CardComponent} from "./card/card.component";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     ListPage,
     DetailPage,
-    PanelComponent
+    PanelPage,
+    CardComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule
-
   ],
   bootstrap: [
     IonicApp
   ],
   entryComponents: [
     MyApp,
-    HomePage,
     ListPage,
     DetailPage,
-    PanelComponent
+    PanelPage,
+    CardComponent
   ],
   providers: [
     StatusBar,
