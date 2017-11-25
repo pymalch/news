@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ListPage } from '../pages/list/list';
 import { DetailPage } from "../pages/detail/detail";
 import { PanelPage } from "../pages/panel/panel";
-import { InitializeService } from "./app/initialize/initialize.service";
+import { InitializeService } from '../app/initialize/initialize.service';
 @Component({
   templateUrl: 'app.html'
 })
@@ -16,7 +16,7 @@ export class MyApp {
   rootPage: any = PanelPage;
 
   pages: Array<{title: string, component: any}>;
-    inits: any;
+  inits: any;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private initializeService: InitializeService) {
     this.initializeApp();
@@ -32,7 +32,7 @@ export class MyApp {
   initializeApp() {
       this.initializeService
           .getInits()
-          .then(inits => this.inits = inits);
+          .then(inits => {this.inits = inits; console.log(inits)});
 
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
