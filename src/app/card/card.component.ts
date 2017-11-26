@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { Initialize } from './../initialize/initialize';
 import { Card } from './card';
  @Component({
   selector: 'card',
@@ -14,13 +14,9 @@ export class CardComponent  {
     3:'پربازدیدترین '
     };
     title: string;
-  constructor() {
+  constructor(private initialize: Initialize) {
 
-   /*for (let i=0; i<5; i++){
-     this.panels.push({
-       title : 'title '+i
-     })
-   }*/
+     // console.log(this.initialize.then(hasan=>{console.log(hasan)});
   }
 
   setTitle(): string {

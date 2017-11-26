@@ -13,6 +13,7 @@ import {PanelPage} from "../pages/panel/panel";
 
 import {PanelService} from "../pages/panel/panel.service";
 import { InitializeService} from "../app/initialize/initialize.service";
+import { Initialize} from "../app/initialize/initialize";
 import {CardComponent} from "./card/card.component";
 
 @NgModule({
@@ -42,7 +43,8 @@ import {CardComponent} from "./card/card.component";
     StatusBar,
     SplashScreen,
     PanelService,
-    InitializeService,
+      InitializeService,
+    Initialize,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
