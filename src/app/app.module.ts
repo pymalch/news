@@ -13,8 +13,8 @@ import {PanelPage} from "../pages/panel/panel";
 
 import {PanelService} from "../pages/panel/panel.service";
 import { InitializeService} from "../app/initialize/initialize.service";
-import { Initialize} from "../app/initialize/initialize";
 import {CardComponent} from "./card/card.component";
+import { CacheModule } from "ionic-cache";
 
 @NgModule({
   declarations: [
@@ -27,7 +27,9 @@ import {CardComponent} from "./card/card.component";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+      CacheModule.forRoot(),
+
+      HttpModule
   ],
   bootstrap: [
     IonicApp
@@ -44,7 +46,7 @@ import {CardComponent} from "./card/card.component";
     SplashScreen,
     PanelService,
       InitializeService,
-    Initialize,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

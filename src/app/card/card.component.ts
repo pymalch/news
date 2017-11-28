@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Initialize } from './../initialize/initialize';
+import { InitializeService } from './../initialize/initialize.service';
+import { Inits } from './../initialize/inits';
 import { Card } from './card';
+
  @Component({
   selector: 'card',
   templateUrl: 'card.html'
@@ -14,12 +16,19 @@ export class CardComponent  {
     3:'پربازدیدترین '
     };
     title: string;
-  constructor(private initialize: Initialize) {
+    inits: Inits;
 
-     // console.log(this.initialize.then(hasan=>{console.log(hasan)});
+  constructor(private initializeService: InitializeService) {
+
+      this.initializeService
+          .getInits()
+          .then(inits => {
+              this.inits = inits;
+              this.setTitle();
+          });
   }
 
-  setTitle(): string {
+  setTitle(): void {
 
       if(this.card.keywords){
           this.title = this.card.keywords;
@@ -28,7 +37,7 @@ export class CardComponent  {
       }
       else if(this.card.category!= undefined && this.card.category > 0){
           //todo set in core
-          this.title = '--';
+          this.title = this.inits.services[this.card.category].title;
           //title = Public.getCategoryTitle(cart.category);
           //self.panels[panel.index].subtitle = Public.t(self.newsTypes[panel.type]);
       }
@@ -37,7 +46,6 @@ export class CardComponent  {
           this.title = this.newsTypes[this.card.type]['title'];
           //self.panels[panel.index].subtitle = null;
       }
-    return this.title;
   }
 
 }
