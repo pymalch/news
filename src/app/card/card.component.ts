@@ -20,11 +20,15 @@ export class CardComponent  {
 
   constructor(private initializeService: InitializeService) {
 
+
       this.initializeService
           .getInits()
           .then(inits => {
-              this.inits = inits;
-              this.setTitle();
+              if(inits){
+                  this.inits = inits;
+                  this.setTitle();
+              }
+
           });
   }
 
@@ -33,7 +37,6 @@ export class CardComponent  {
       if(this.card.keywords){
           this.title = this.card.keywords;
           //self.panels[panel.index].subtitle = Public.t(self.newsTypes[panel.type]);
-
       }
       else if(this.card.category!= undefined && this.card.category > 0){
           //todo set in core

@@ -13,7 +13,11 @@ import {PanelPage} from "../pages/panel/panel";
 
 import {PanelService} from "../pages/panel/panel.service";
 import { InitializeService} from "../app/initialize/initialize.service";
-import {CardComponent} from "./card/card.component";
+import { NewsListService} from "../app/news-list/news-list.service";
+
+import { CardComponent } from "./card/card.component";
+import { NewsListComponent } from "./news-list/news-list.component";
+
 import { CacheModule } from "ionic-cache";
 
 @NgModule({
@@ -22,7 +26,8 @@ import { CacheModule } from "ionic-cache";
     ListPage,
     DetailPage,
     PanelPage,
-    CardComponent
+    CardComponent,
+      NewsListComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,7 @@ import { CacheModule } from "ionic-cache";
     SplashScreen,
     PanelService,
       InitializeService,
+      NewsListService,
 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

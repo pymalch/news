@@ -1,36 +1,43 @@
 import { Injectable }    from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Inits } from './inits';
+import { News } from './news';
+import { Card } from './../card/card';
 import { CacheService } from "ionic-cache";
 
 @Injectable()
-export class InitializeService {
+export class NewsListService {
 
-    cacheKey: string = 'init'
+    cacheKey: string ;
 
-    private initUrl = 'api/init';  // URL to web api
+    private url = 'api/news-list';  // URL to web api
 
     constructor(private http: Http, private cache: CacheService ) {
         cache.setDefaultTTL(15);
 
     }
 
-    getApiInit(): Promise<Inits>{
-        let result: any = this.http.get(this.initUrl)
+    getApiNews(): Promise<News[]>{
+        let result: any = this.http.get(this.url)
             .toPromise()
-            .then(response => response.json() as Inits )
+            .then(response =>
+            {
+                return response.json()[0].result as News[];
+            }  )
             .catch(this.handleError);
 
         return result;
 
     }
 
-    getInits(): Promise<Inits>{
+    getNewsList(card: Card): Promise<News[]>{
+
+        this.cacheKey = "news-list-"+ card.id;
 
         let result= this.cache.getItem(this.cacheKey).catch(() => {
             // fall here if item is expired or doesn't exist
-            return this.getApiInit().then(result => {
+            return this.getApiNews().then(result => {
+
                 let res = this.cache.saveItem(this.cacheKey, result).then(res => {
                     return JSON.parse(res.value);
                 });
@@ -43,6 +50,7 @@ export class InitializeService {
 
 
     }
+
 
 
 

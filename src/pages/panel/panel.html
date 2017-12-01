@@ -9,7 +9,7 @@
 
 <ion-content>
 
-  <ion-slides pager>
+  <ion-slides pager *ngIf="cards!=undefined">
     <ion-slide *ngFor="let card of cards">
       <card [card]="card"></card>
     </ion-slide>
