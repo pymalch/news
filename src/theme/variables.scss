@@ -5,7 +5,6 @@
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 
-
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
@@ -86,3 +85,6 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+@import "vazir";
+$font-family-base: -apple-system, "Vazir" ,"Helvetica Neue", "Roboto", sans-serif;
+$font-family-md-base: -apple-system, "Vazir" ,"Helvetica Neue", "Roboto", sans-serif;

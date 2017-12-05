@@ -9,14 +9,15 @@ export class InitializeService {
 
     cacheKey: string = 'init'
 
-    private initUrl = 'api/init';  // URL to web api
+    private initUrl = 'api/init';  // URL to web apiInitializeService
+    private inits: Inits;
 
     constructor(private http: Http, private cache: CacheService ) {
         cache.setDefaultTTL(15);
 
     }
 
-    getApiInit(): Promise<Inits>{
+    private getApiInit(): Promise<Inits>{
         let result: any = this.http.get(this.initUrl)
             .toPromise()
             .then(response => response.json() as Inits )
@@ -26,7 +27,8 @@ export class InitializeService {
 
     }
 
-    getInits(): Promise<Inits>{
+    callInits(): Promise<Inits>{
+        //console.log('callInits');
 
         let result= this.cache.getItem(this.cacheKey).catch(() => {
             // fall here if item is expired or doesn't exist
@@ -37,11 +39,18 @@ export class InitializeService {
                 return res;
             });
             });
-
+        result.then(inits => {
+            if(inits){
+                this.inits = inits;
+            }
+        });
 
         return result;
 
+    }
 
+    getInits(): Inits{
+        return this.inits;
     }
 
 

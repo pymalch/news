@@ -14,6 +14,8 @@ import {PanelPage} from "../pages/panel/panel";
 import {PanelService} from "../pages/panel/panel.service";
 import { InitializeService} from "../app/initialize/initialize.service";
 import { NewsListService} from "../app/news-list/news-list.service";
+import { PublicFunctions} from "../app/public-functions/public-functions";
+
 
 import { CardComponent } from "./card/card.component";
 import { NewsListComponent } from "./news-list/news-list.component";
@@ -52,6 +54,7 @@ import { CacheModule } from "ionic-cache";
     PanelService,
       InitializeService,
       NewsListService,
+      PublicFunctions,
 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

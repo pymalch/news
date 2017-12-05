@@ -18,21 +18,13 @@ export class CardComponent  {
     title: string;
     inits: Inits;
 
-  constructor(private initializeService: InitializeService) {
+  constructor(private iS: InitializeService) {
 
-
-      this.initializeService
-          .getInits()
-          .then(inits => {
-              if(inits){
-                  this.inits = inits;
-                  this.setTitle();
-              }
-
-          });
   }
 
-  setTitle(): void {
+  getTitle(): string {
+      if(this.card==undefined)
+        return;
 
       if(this.card.keywords){
           this.title = this.card.keywords;
@@ -40,7 +32,7 @@ export class CardComponent  {
       }
       else if(this.card.category!= undefined && this.card.category > 0){
           //todo set in core
-          this.title = this.inits.services[this.card.category].title;
+          this.title = this.iS.getInits().services[this.card.category].title;
           //title = Public.getCategoryTitle(cart.category);
           //self.panels[panel.index].subtitle = Public.t(self.newsTypes[panel.type]);
       }
@@ -49,6 +41,7 @@ export class CardComponent  {
           this.title = this.newsTypes[this.card.type]['title'];
           //self.panels[panel.index].subtitle = null;
       }
+      return this.title;
   }
 
 }

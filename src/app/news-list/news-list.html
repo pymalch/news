@@ -1,0 +1,29 @@
+<ion-scroll scrollY="true">
+    <ion-card *ngFor="let item of news">
+
+          <img *ngIf="item.image_links!=''" src="{{item.image_links}}">
+
+
+    <ion-card-content>
+        <ion-card-title>
+            {{item.topic}}
+        </ion-card-title>
+    </ion-card-content>
+
+    <ion-row>
+        <ion-col center text-right>
+            <ion-note>
+                <ion-icon name="text"></ion-icon>
+                {{iS.getInits().agencies[item.agency].title}}
+            </ion-note>
+        </ion-col>
+
+          <ion-col center text-right>
+              <ion-note>
+                  <ion-icon name="text"></ion-icon>
+                  {{pF.convertTime(item.release_date)}}
+              </ion-note>
+          </ion-col>
+    </ion-row>
+</ion-card>
+</ion-scroll>

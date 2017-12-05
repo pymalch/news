@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { Card } from './../../app/card/card';
+import { InitializeService } from './../../app/initialize/initialize.service';
 
 import { PanelService } from './panel.service';
 @Component({
@@ -14,7 +15,7 @@ export class PanelPage implements OnInit{
   @ViewChild(Slides) slides: Slides;
   cards: Card[];
 
-  constructor(public navCtrl: NavController,private panelService: PanelService) {
+  constructor(public navCtrl: NavController,private panelService: PanelService, private iS: InitializeService) {
   }
 
   getPanels(): void {
@@ -24,7 +25,11 @@ export class PanelPage implements OnInit{
   }
 
   ngOnInit(): void{
-    this.getPanels();
+
+      this.iS.callInits().then(inits=>{
+          this.getPanels();
+      });
+
   }
 
 }
