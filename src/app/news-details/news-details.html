@@ -1,0 +1,21 @@
+<ion-header >
+    <ion-navbar>
+        <ion-title>News Details</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content >
+<div *ngIf="newsDetails!=undefined">
+    <ion-title padding>{{newsDetails.topic}}</ion-title>
+
+    <ion-item-divider></ion-item-divider>
+    <p text-justify padding>
+        {{newsDetails.description}}
+    </p>
+</div>
+
+
+
+
+  </ion-content>
+
+

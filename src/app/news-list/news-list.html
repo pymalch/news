@@ -5,7 +5,7 @@
 
 
     <ion-card-content>
-        <ion-card-title>
+        <ion-card-title (click)="openDetails(item.id)">
             {{item.topic}}
         </ion-card-title>
     </ion-card-content>
