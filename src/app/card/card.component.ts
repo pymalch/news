@@ -11,9 +11,9 @@ import { Card } from './card';
 export class CardComponent  {
   @Input() card: Card;
   newsTypes  = {
-    1:'آخرین ',
-    2:'مهمترین ',
-    3:'پربازدیدترین '
+    1:'آخرین  اخبار',
+    2:'مهمترین  اخبار',
+    3:'پربازدیدترین  اخبار'
     };
     title: string;
     inits: Inits;
@@ -33,12 +33,10 @@ export class CardComponent  {
       else if(this.card.category!= undefined && this.card.category > 0){
           //todo set in core
           this.title = this.iS.getInits().services[this.card.category].title;
-          //title = Public.getCategoryTitle(cart.category);
-          //self.panels[panel.index].subtitle = Public.t(self.newsTypes[panel.type]);
       }
       else {
           //todo set in core
-          this.title = this.newsTypes[this.card.type]['title'];
+          this.title = this.newsTypes[this.card.type] ;
           //self.panels[panel.index].subtitle = null;
       }
       return this.title;

@@ -8,10 +8,30 @@
     <ion-title padding>{{newsDetails.topic}}</ion-title>
 
     <ion-item-divider></ion-item-divider>
+    <ion-chip>
+        <ion-icon name="flag" color="danger"></ion-icon>
+        <ion-label>{{iS.inits.agencies[newsDetails.agency].title}}</ion-label>
+    </ion-chip>
+    <ion-chip>
+    <ion-icon name="folder"></ion-icon>
+    <ion-label>{{newsDetails.service}}</ion-label>
+</ion-chip>
+
     <p text-justify padding>
         {{newsDetails.description}}
     </p>
+
+    <ion-fab bottom left>
+        <button ion-fab mini><ion-icon name="share"></ion-icon></button>
+        <ion-fab-list side="top">
+            <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+            <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+            <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+            <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
 </div>
+
 
 
 

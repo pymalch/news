@@ -1,29 +1,32 @@
 <ion-scroll scrollY="true">
     <ion-card *ngFor="let item of news">
 
-          <img *ngIf="item.image_links!=''" src="{{item.image_links}}">
+        <ion-row>
+
+            <ion-col col-9 text-justify (click)="openDetails(item.id)">
 
 
-    <ion-card-content>
-        <ion-card-title (click)="openDetails(item.id)">
-            {{item.topic}}
-        </ion-card-title>
-    </ion-card-content>
+                    {{item.topic}}
 
-    <ion-row>
-        <ion-col center text-right>
-            <ion-note>
-                <ion-icon name="text"></ion-icon>
+                <ion-row  padding-top>
+                    <ion-note>
+                    <span item-left> <ion-icon name="text"></ion-icon>
                 {{iS.getInits().agencies[item.agency].title}}
-            </ion-note>
-        </ion-col>
+            </span>
+            <span item-left> <ion-icon name="text"></ion-icon>
+                {{pF.convertTime(item.release_date)}}
+            </span>
+                    </ion-note></ion-row>
 
-          <ion-col center text-right>
-              <ion-note>
-                  <ion-icon name="text"></ion-icon>
-                  {{pF.convertTime(item.release_date)}}
-              </ion-note>
-          </ion-col>
-    </ion-row>
+            </ion-col>
+            <ion-col col-3>
+                <img *ngIf="item.image_links!=''" src="{{item.image_links}}">
+            </ion-col>
+
+
+        </ion-row>
+
+
+
 </ion-card>
 </ion-scroll>
