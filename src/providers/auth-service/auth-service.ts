@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
+import { Storage } from '@ionic/storage';
 
 import 'rxjs/add/operator/map';
 
@@ -15,7 +16,10 @@ export class User {
 
 @Injectable()
 export class AuthServiceProvider {
-
+    storage: Storage;
+    constructor(storage: Storage){
+        this.storage = storage;
+    }
     currentUser: User;
 
     public login(credentials) {
@@ -27,7 +31,7 @@ export class AuthServiceProvider {
                 // At this point make a request to your backend to make a real check!
                 let access = (credentials.password === "pass" && credentials.email === "email");
                 this.currentUser = new User('Simon', 'saimon@devdactic.com');
-                this.storage.set('token','sometoken');
+                this.storage.set('token','33');
                 observer.next(access);
                 observer.complete();
             });

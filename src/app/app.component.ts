@@ -12,7 +12,7 @@ import { LoginPage } from "../pages/login/login";
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {4
+export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
   rootPage: any;
@@ -22,18 +22,19 @@ export class MyApp {4
     storage: Storage;
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, storage: Storage) {
 
+      this.storage = storage;
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'پنل اخبار', component: PanelPage },
       { title: 'درباره خبروان', component: DetailPage},
      ];
 
-      this.storage.get('token').then((val) => {
+      /*this.storage.get('token').then((val) => {
           return Observable.create(observer => {
               observer.next(access);
               observer.complete();
           });
-      });
+      });*/
 
       this.storage.get('token').then(val=>{
           if(val!=null)
@@ -42,8 +43,12 @@ export class MyApp {4
             this.rootPage = LoginPage;
       });
 
-      this.rootPage = PanelPage;
   }
+
+    logout(){
+        this.storage.remove('token');
+        this.nav.setRoot(LoginPage);
+    }
 
   openPage(page) {
     // Reset the content nav to have just this page
